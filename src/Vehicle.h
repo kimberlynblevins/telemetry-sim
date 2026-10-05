@@ -1,0 +1,29 @@
+#pragma once
+
+#include <string>
+
+class Vehicle {
+  public:
+    Vehicle(std::string vehicleId, double latitude, double longitude);
+
+    // Getters: reads state, returns a value
+    std::string getVehicleId() const;
+    double getSpeed() const;
+    double getAcceleration() const;
+    int getRpm() const;
+    double getLatitude() const;
+    double getLongitude() const;
+    double getFuelLevel() const;
+
+    void update(double elapsedTime);  // changes state, returns nothing
+
+  private:
+    std::string vehicleId;
+    double speed;
+    double acceleration;
+    int rpm;
+    double latitude;
+    double longitude;
+    double fuelLevel;
+
+};
