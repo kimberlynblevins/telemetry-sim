@@ -18,6 +18,8 @@ class Vehicle {
     void update(double elapsedTime);  // changes state, returns nothing
 
   private:
+    static constexpr double maxSpeed = 30.0;
+
     enum class DrivingState {
       Accelerating,
       Cruising,

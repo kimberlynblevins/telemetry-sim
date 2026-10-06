@@ -56,10 +56,13 @@ void Vehicle::update(double elapsedTime) {
   if (speed < 0) {
     speed = 0;
   }
+  if (speed > maxSpeed) {
+    speed = maxSpeed;
+  }
 
   timeInState = timeInState + elapsedTime;
 
-  if ((drivingState == DrivingState::Accelerating) && (speed >= 30)) {
+  if ((drivingState == DrivingState::Accelerating) && (speed >= maxSpeed)) {
     drivingState = DrivingState::Cruising;
     timeInState = 0.0;
   } else if ((drivingState == DrivingState::Cruising) && (timeInState >= 5.0)) {

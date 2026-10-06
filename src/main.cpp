@@ -9,9 +9,13 @@ int main() {
 
   Vehicle vehicle("vehicle-001", 36.1627, -86.7816);
 
+  const double elapsedTime = 1.0;
+  double simulationTime = 0.0;
+
   for (int i = 0; i < 18; ++i) {
-    vehicle.update(1.0);
-    cout << "Time: " << i + 1 << "s | Speed: "
+    vehicle.update(elapsedTime);
+    simulationTime += elapsedTime;
+    cout << "Time: " << simulationTime << "s | Speed: "
          << vehicle.getSpeed()
          << " | Acceleration: "
          << vehicle.getAcceleration()
