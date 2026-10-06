@@ -9,9 +9,13 @@ int main() {
 
   Vehicle vehicle("vehicle-001", 36.1627, -86.7816);
 
-  for(int i = 0; i < 5; ++i) {
+  for (int i = 0; i < 18; ++i) {
     vehicle.update(1.0);
-    cout << "Time: " << i + 1 << "s | Speed: " << vehicle.getSpeed() << endl; 
+    cout << "Time: " << i + 1 << "s | Speed: "
+         << vehicle.getSpeed()
+         << " | Acceleration: "
+         << vehicle.getAcceleration()
+         << endl;
   }
 
   cout << "Vehicle ID: " << vehicle.getVehicleId() << endl;

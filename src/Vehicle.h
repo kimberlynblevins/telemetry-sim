@@ -18,6 +18,11 @@ class Vehicle {
     void update(double elapsedTime);  // changes state, returns nothing
 
   private:
+    enum class DrivingState {
+      Accelerating,
+      Cruising,
+      Decelerating
+    };
     std::string vehicleId;
     double speed;
     double acceleration;
@@ -25,5 +30,7 @@ class Vehicle {
     double latitude;
     double longitude;
     double fuelLevel;
+    double timeInState;
+    DrivingState drivingState;
 
 };
