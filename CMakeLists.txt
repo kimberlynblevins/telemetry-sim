@@ -8,4 +8,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(telemetry-sim 
   src/main.cpp
   src/Vehicle.cpp 
+  src/TelemetryGenerator.cpp
 )

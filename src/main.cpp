@@ -1,4 +1,5 @@
 #include "Vehicle.h"
+#include "TelemetryGenerator.h"
 #include <iostream>
 
 using namespace std;
@@ -11,22 +12,36 @@ int main() {
 
   const double elapsedTime = 1.0;
   double simulationTime = 0.0;
+  unsigned int sequenceNumber = 1;
 
   for (int i = 0; i < 18; ++i) {
     vehicle.update(elapsedTime);
     simulationTime += elapsedTime;
-    cout << "Time: " << simulationTime << "s | Speed: "
-         << vehicle.getSpeed()
+
+    TelemetryPacket packet = createPacket(vehicle, simulationTime, sequenceNumber);
+
+    sequenceNumber++;
+
+    cout << "Packet: "
+         << packet.sequenceNumber
+         << " | Time: "
+         << packet.timestamp
+         << "s | Speed: "
+         << packet.speed
          << " | Acceleration: "
-         << vehicle.getAcceleration()
+         << packet.acceleration
+         << " | Vehicle ID: "
+         << packet.vehicleId
+         << " | RPM: "
+         << packet.rpm
+         << " | Latitude: "
+         << packet.latitude
+         << " | Longitude: "
+         << packet.longitude
+         << " | Fuel Level: "
+         << packet.fuelLevel
+         << "%"
          << endl;
   }
 
-  cout << "Vehicle ID: " << vehicle.getVehicleId() << endl;
-  cout << "Speed: " << vehicle.getSpeed() << endl;
-  cout << "Acceleration: " << vehicle.getAcceleration() << endl;
-  cout << "RPM: " << vehicle.getRpm() << endl;
-  cout << "Latitude: " << vehicle.getLatitude() << endl;
-  cout << "Longitude: " << vehicle.getLongitude() << endl;
-  cout << "Fuel Level: " << vehicle.getFuelLevel() << endl;
 }
