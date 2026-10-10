@@ -1,6 +1,7 @@
 #include "Vehicle.h"
 #include "TelemetryGenerator.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -14,11 +15,15 @@ int main() {
   double simulationTime = 0.0;
   unsigned int sequenceNumber = 1;
 
+  std::vector<TelemetryPacket> packetHistory;
+
   for (int i = 0; i < 18; ++i) {
     vehicle.update(elapsedTime);
     simulationTime += elapsedTime;
 
     TelemetryPacket packet = createPacket(vehicle, simulationTime, sequenceNumber);
+
+    packetHistory.push_back(packet);
 
     sequenceNumber++;
 
@@ -44,4 +49,5 @@ int main() {
          << endl;
   }
 
+  cout << "Packets stored: " << packetHistory.size() << endl;
 }
